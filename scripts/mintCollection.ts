@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 import ArrayOfUri from "../tokensURI/ArrayOfUri";
 
 // hardhat run --network rinkeby scripts/deploy.ts
-// hardhat verify --network rinkeby 0x70D3B2DaF5e75aA8e51c6ad282427E1CB115FE6A  "Dummy Cat" "DMMC" "QmeMAT5163i31Gv25SGRKZ4Hx8jYiUVyyKoxJ6V245PFWX"
+// hardhat verify --network rinkeby --constructor-args ./scripts/argument.js 0xCa7e44B9f9C108857eE89cde9879085aE6d5395d
 
 async function main(): Promise<void> {
   const [signer] = await ethers.getSigners();

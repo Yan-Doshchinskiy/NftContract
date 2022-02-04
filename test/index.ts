@@ -4,15 +4,18 @@ import { Artifact } from "hardhat/types";
 import mintFunctions from "./mintFunctions";
 import viewFunctions from "./viewFunctions";
 import uriFunctions from "./uriFunctions";
+import argumentsArray from "../scripts/argument";
 
 describe("Token contract testing", async function () {
   before(async function () {
     this.hre = hre;
-    this.tokenName = "Jeembo Cat";
-    this.tokenSymbol = "JFR";
+    [
+      this.tokenName,
+      this.tokenSymbol,
+      this.testContractURI,
+      this.testSupplyLimit,
+    ] = argumentsArray;
     this.baseURI = "https://gateway.pinata.cloud/ipfs/";
-    this.testContractURI = "QmeMAT5163i31Gv25SGRKZ4Hx8jYiUVyyKoxJ6V245PFWX";
-    this.testSupplyLimit = 15;
     this.zeroAddress = "0x0000000000000000000000000000000000000000";
     this.testMetaData =
       "bafkreidrksef6qd2b7dvwdqryhopkqc5wldops7q3kurqkbonjhgjmtc6i";
