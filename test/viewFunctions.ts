@@ -11,6 +11,10 @@ export default (): void => {
   });
   it("BASE URI was changed correctly", async function (): Promise<void> {
     const baseURI = await this.instance.getBaseURI();
-    expect(baseURI).to.equal("ipfs://");
+    expect(baseURI).to.equal(this.baseURI);
+  });
+  it("supplyLimit equal to constructor argument", async function (): Promise<void> {
+    const supplyLimit = await this.instance.getSupplyLimit();
+    expect(supplyLimit).to.equal(this.testSupplyLimit);
   });
 };

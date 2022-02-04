@@ -1,17 +1,16 @@
 import { ethers } from "hardhat";
+import argumentsArray from "./argument";
 
-// hardhat run --network kovan scripts/deploy.ts
+// hardhat run --network rinkeby scripts/deploy.ts
+// hardhat verify --network rinkeby 0x70D3B2DaF5e75aA8e51c6ad282427E1CB115FE6A  "Dummy Cat" "DMMC" "QmeMAT5163i31Gv25SGRKZ4Hx8jYiUVyyKoxJ6V245PFWX"
 
 async function main(): Promise<void> {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying contracts with the account:", deployer.address);
   console.log("Account balance:", (await deployer.getBalance()).toString());
-  const Token = await ethers.getContractFactory("TokenNFT721");
-  const tokenName = "Dummy Cat";
-  const tokenSymbol = "DMMC";
-  type ContractPayload = [string, string];
-  const deployPayload: ContractPayload = [tokenName, tokenSymbol];
-  const Contract = await Token.deploy(...deployPayload);
+  const Token = await ethers.getContractFactory("JeembosFrenzy");
+  type argsArray = [string, string, string, number];
+  const Contract = await Token.deploy(...(argumentsArray as argsArray));
   await Contract.deployed();
   console.log("ERC721 Contract deployed to:", Contract.address);
 }

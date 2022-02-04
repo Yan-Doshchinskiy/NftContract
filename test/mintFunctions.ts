@@ -16,4 +16,12 @@ export default (): void => {
     const baseURI = await this.instance.getBaseURI();
     expect(uri).to.equal(`${baseURI}${this.testMetaData}`);
   });
+  it("The total supply limit has been reached", async function (): Promise<void> {
+    for (let i = 0; i < this.testSupplyLimit; i++) {
+      await this.instance.mintToken(this.owner.address, this.testMetaData);
+    }
+    await expect(
+      this.instance.mintToken(this.owner.address, this.testMetaData)
+    ).to.be.revertedWith("the total supply limit has been reached");
+  });
 };

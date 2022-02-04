@@ -24,6 +24,7 @@ const accounts = [ownerPrivateKey, secondSignerPrivateKey].filter(
 const chainId = Number(process.env.CHAIN_ID as string) || 0;
 const reportGas = (process.env.REPORT_GAS as string) === "true";
 const apiKey = process.env.API_KEY as string;
+const mintAddress = process.env.MINT_ADDRESS as string;
 
 type IEnvItem = { value: string | number; key: string };
 
@@ -32,6 +33,7 @@ const requiredEnvs: Array<IEnvItem> = [
   { value: ownerPrivateKey, key: "PRIVATE_KEY" },
   { value: chainId, key: "CHAIN_ID" },
   { value: apiKey, key: "API_KEY" },
+  { value: mintAddress, key: "MINT_ADDRESS" },
 ];
 
 requiredEnvs.forEach((item: IEnvItem): void => {
@@ -53,7 +55,7 @@ const config: IConfig = {
     },
   },
   networks: {
-    kovan: {
+    rinkeby: {
       url,
       accounts: accounts,
       chainId: chainId,
